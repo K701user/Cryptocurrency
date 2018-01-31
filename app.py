@@ -75,7 +75,7 @@ def processRequest(req):
     if currency is None:
         return {}
     url = base_url + currency
-    data = request.get_json(url)
+    data = requests.get(url).json()
     res = makeWebhookResult(currency, data)
     return res
 
