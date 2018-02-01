@@ -36,10 +36,11 @@ from flask import Flask, render_template
 import sys
 import logging
 
+app = Flask(__name__)
+
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
 app.logger.setLevel(logging.ERROR)
 # Flask app should start in global layout
-app = Flask(__name__)
 
 coins = {'Bitcoin': 'btc_jpy',
          'Ethereum': 'eth_jpy',
