@@ -25,14 +25,12 @@ from urllib.error import HTTPError
 import json
 import os
 import requests
-import json
 from pandas import DataFrame
 
 from flask import Flask
 from flask import request
 from flask import make_response
-
-from flask import Flask, render_template
+from flask import render_template
 import sys
 import logging
 
@@ -82,6 +80,7 @@ def processRequest(req):
     if currency is None:
         return {}
     url = base_url + currency
+    print(url)
     data = requests.get(url).json()
     res = makeWebhookResult(currency, data)
     return res
@@ -95,6 +94,7 @@ def get_currency(req):
     if cryptocurrency is None:
         return None
 
+    print(coins[cryptocurrency])
     return coins[cryptocurrency]
 
 
