@@ -32,6 +32,12 @@ from flask import Flask
 from flask import request
 from flask import make_response
 
+from flask import Flask, render_template
+import sys
+import logging
+
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 # Flask app should start in global layout
 app = Flask(__name__)
 
