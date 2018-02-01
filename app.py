@@ -98,9 +98,6 @@ def get_currency(req):
 
 
 def makeWebhookResult(currency, data):
-    result = query.get('results')
-    if result is None:
-        return {}
 
     speech = "現在の" + currency + "の価格は" + data['rate'] + "です。"
 
