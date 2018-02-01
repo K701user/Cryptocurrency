@@ -76,13 +76,13 @@ def processRequest(req):
     if req.get("result").get("action") != "check_Cryptocurrency":
         return {}
     base_url = 'https://coincheck.com/api/rate/'
-    currency = get_currency(req)
+    cryptocurrency, currency = get_currency(req)
     if currency is None:
         return {}
     url = base_url + currency
     print(url)
     data = requests.get(url).json()
-    res = makeWebhookResult(currency, data)
+    res = makeWebhookResult(currency, data, cryptocurrency)
     return res
 
 
@@ -93,13 +93,12 @@ def get_currency(req):
     if cryptocurrency is None:
         return None
 
-    print(coins[cryptocurrency])
-    return coins[cryptocurrency]
+    return cryptocurrency, coins[cryptocurrency]
 
 
-def makeWebhookResult(currency, data):
-    currency_name = coins.keys()[list(coins.values()).index(currency)]
-    speech = "現在の" + currency_name + "の価格は" + str(round(float(data['rate']), 3)) + "円です。"
+def makeWebhookResult(currency, data, cryptocurrency):
+
+    speech = "現在の" + cryptocurrency + "の価格は" + str(round(float(data['rate']), 3)) + "円です。"
 
     print("Response:")
     print(speech)
