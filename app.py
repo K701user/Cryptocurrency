@@ -86,7 +86,6 @@ def processRequest(req):
     return res
 
 
-@staticmethod
 def get_currency(req):
     result = req.get("result")
     parameters = result.get("parameters")
