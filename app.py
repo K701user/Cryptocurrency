@@ -98,7 +98,7 @@ def get_currency(req):
 
 
 def makeWebhookResult(currency, data):
-    currency_name = coins.keys()[coins.values().index(currency)]
+    currency_name = coins.keys()[list(coins.values()).index(currency)]
     speech = "現在の" + currency_name + "の価格は" + str(round(float(data['rate']), 3)) + "円です。"
 
     print("Response:")
